@@ -1,5 +1,3 @@
-
-Index · HTML
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -34,7 +32,7 @@ Index · HTML
       --line: #2b4149;
     }
   }
- 
+
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
   body {
@@ -50,7 +48,7 @@ Index · HTML
   }
   a { color: var(--trace); }
   :focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; border-radius: 4px; }
- 
+
   /* Navigation */
   .nav {
     position: sticky; top: 0; z-index: 10;
@@ -68,9 +66,9 @@ Index · HTML
     font: 500 .95rem var(--body); color: var(--ink); text-decoration: none;
   }
   .nav a:hover { background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); }
- 
+
   main { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
- 
+
   /* En-tête */
   .hero { padding: 3.5rem 0 1rem; }
   .hero h1 {
@@ -79,12 +77,12 @@ Index · HTML
   .hero p { margin: .8rem 0 0; max-width: 40rem; color: var(--ink-soft); }
   .wave { display: block; width: 100%; height: 90px; margin-top: 1.6rem; }
   .wave path { fill: none; stroke: var(--trace); stroke-width: 2.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
- 
+
   /* Sections */
   section { padding-top: 3.5rem; }
   section > h2 { margin: 0 0 .4rem; font: 700 2rem/1.15 var(--head); letter-spacing: -.01em; }
   .intro { margin: 0 0 1.4rem; color: var(--ink-soft); max-width: 40rem; }
- 
+
   /* Boutons de choix */
   .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .9rem; }
   .choice {
@@ -99,7 +97,7 @@ Index · HTML
   .choice:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
   .choice strong { display: block; font: 700 1.15rem/1.3 var(--head); }
   .choice span { display: block; margin-top: .25rem; font-size: .93rem; line-height: 1.45; color: var(--ink-soft); }
- 
+
   /* Panneau de détail */
   .detail {
     margin-top: 1rem; padding: 1.5rem 1.6rem;
@@ -117,7 +115,7 @@ Index · HTML
   .detail th { font-weight: 500; }
   .empty { color: var(--ink-soft); font-size: .95rem; margin-top: .9rem; }
   @keyframes open { from { opacity: 0; } to { opacity: 1; } }
- 
+
   .links { display: flex; flex-wrap: wrap; gap: .6rem; }
   .btn {
     display: inline-block; padding: .55rem 1.1rem; border-radius: 6px;
@@ -125,7 +123,7 @@ Index · HTML
   }
   .btn:hover { filter: brightness(1.12); }
   .btn.alt { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
- 
+
   /* Qui suis-je */
   .about {
     display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.2rem;
@@ -143,9 +141,13 @@ Index · HTML
   .timeline small { color: var(--ink-soft); font-size: .92rem; }
   .chips { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0 0 1.2rem; list-style: none; }
   .chips li { padding: .25rem .75rem; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); font-size: .93rem; }
- 
+
   footer { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 3rem; color: var(--ink-soft); font-size: .9rem; }
- 
+
+  /* Lecteur PDF */
+  .pdf { display: block; width: 100%; height: 80vh; min-height: 600px; border: 1px solid var(--line); border-radius: 4px; background: #fff; margin-bottom: 1.2rem; }
+  .pdf-fallback { padding: 1rem; }
+
   @media (max-width: 720px) { .about { grid-template-columns: 1fr; } }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -155,7 +157,7 @@ Index · HTML
 </style>
 </head>
 <body>
- 
+
 <nav class="nav" aria-label="Navigation principale">
   <ul>
     <li><a href="#projets">Projets</a></li>
@@ -164,7 +166,7 @@ Index · HTML
     <li><a href="#about">Qui suis-je</a></li>
   </ul>
 </nav>
- 
+
 <main>
   <header class="hero">
     <h1>Paul Agneray</h1>
@@ -174,28 +176,28 @@ Index · HTML
       <path d="M0 60 C 50 0, 100 0, 150 60 S 250 120, 300 60 S 400 0, 450 60 S 550 120, 600 60 L600 20 H700 V100 H800 V20 H900 V100 H1000 V20 H1100 V100 H1200"/>
     </svg>
   </header>
- 
+
   <section id="projets" aria-labelledby="t-projets">
     <h2 id="t-projets">Projets</h2>
     <p class="intro">Clique sur un projet pour voir le détail.</p>
     <div class="choices" data-key="projets"></div>
     <div class="detail" hidden></div>
   </section>
- 
+
   <section id="bulletin" aria-labelledby="t-bulletin">
     <h2 id="t-bulletin">Bulletin</h2>
     <p class="intro">Mes résultats, semestre par semestre.</p>
     <div class="choices" data-key="bulletin"></div>
     <div class="detail" hidden></div>
   </section>
- 
+
   <section id="experience" aria-labelledby="t-experience">
     <h2 id="t-experience">Expérience professionnelle</h2>
     <p class="intro">Mes stages et emplois, avec les missions confiées.</p>
     <div class="choices" data-key="experience"></div>
     <div class="detail" hidden></div>
   </section>
- 
+
   <section id="about" aria-labelledby="t-about">
     <h2 id="t-about">Qui suis-je</h2>
     <p class="intro">Ma présentation, en complément de mon CV.</p>
@@ -228,9 +230,8 @@ Index · HTML
     </div>
   </section>
 </main>
- 
+
 <footer>© <span id="year"></span> Paul Agneray</footer>
- 
 <script>
 /* ==========================================================
    ✏️ TON CONTENU : modifie uniquement cette partie.
@@ -241,21 +242,20 @@ Index · HTML
    - liens          : boutons en bas du détail (fichiers à mettre dans le dossier du site)
    ========================================================== */
 const DATA = {
- 
+
   projets: [
     {
-      titre: "Compte rendu – Projet électrocardiogramme",
-      resume: "Chaîne d'acquisition du signal cardiaque",
-      meta: "Projet d'électronique analogique",
+      titre: "Compte rendu – Cardiofréquencemètre",
+      resume: "Capteur, filtres, mise au format TTL et buzzer",
+      meta: "Projet d'électronique · juin 2026",
       html: `
-        <p>Étude et réalisation d'une chaîne d'acquisition du signal cardiaque : de la mesure aux étages d'amplification et de filtrage.</p>
-        <ul>
-          <li>Objectif du projet et cahier des charges</li>
-          <li>Schémas et choix des composants</li>
-          <li>Simulations et mesures</li>
-          <li>Résultats et conclusion</li>
-        </ul>`,
-      liens: [{ label: "Lire le compte rendu (PDF)", href: "docs/compte-rendu-ecg.pdf" }]
+        <object class="pdf" data="docs/compte-rendu-ecg.pdf" type="application/pdf" aria-label="Compte rendu du cardiofréquencemètre (PDF)">
+          <p class="pdf-fallback">Ton navigateur n'affiche pas les PDF ici. Utilise les boutons ci-dessous pour l'ouvrir.</p>
+        </object>`,
+      liens: [
+        { label: "Ouvrir dans un nouvel onglet", href: "docs/compte-rendu-ecg.pdf", blank: true },
+        { label: "Télécharger le PDF", href: "docs/compte-rendu-ecg.pdf", alt: true, download: true }
+      ]
     },
     {
       titre: "Code de mon jeu",
@@ -287,14 +287,14 @@ const DATA = {
       ]
     }
   ],
- 
+
   bulletin: [
     { titre: "Semestre 1", resume: "BUT 1", meta: "Première année", html: bulletinTable(), liens: [{ label: "Bulletin (PDF)", href: "docs/bulletin-s1.pdf" }] },
     { titre: "Semestre 2", resume: "BUT 1", meta: "Première année", html: bulletinTable(), liens: [{ label: "Bulletin (PDF)", href: "docs/bulletin-s2.pdf" }] },
     { titre: "Semestre 3", resume: "BUT 2, parcours ESE", meta: "Deuxième année", html: bulletinTable(), liens: [{ label: "Bulletin (PDF)", href: "docs/bulletin-s3.pdf" }] },
     { titre: "Semestre 4", resume: "BUT 2, parcours ESE", meta: "Deuxième année", html: bulletinTable(), liens: [{ label: "Bulletin (PDF)", href: "docs/bulletin-s4.pdf" }] }
   ],
- 
+
   experience: [
     {
       titre: "Expérience 1",
@@ -324,7 +324,7 @@ const DATA = {
     }
   ]
 };
- 
+
 /* Modèle de tableau pour le bulletin : remplace « … » par tes vraies notes */
 function bulletinTable() {
   return `
@@ -335,7 +335,7 @@ function bulletinTable() {
       <tr><th>Mathématiques et signal</th><td>…</td></tr>
     </table>`;
 }
- 
+
 /* ==========================================================
    Fonctionnement (pas besoin de modifier)
    ========================================================== */
@@ -343,7 +343,7 @@ document.querySelectorAll(".choices").forEach(function (list) {
   const key = list.dataset.key;
   const panel = list.nextElementSibling;
   const items = DATA[key];
- 
+
   items.forEach(function (item, i) {
     const b = document.createElement("button");
     b.type = "button";
@@ -353,17 +353,18 @@ document.querySelectorAll(".choices").forEach(function (list) {
     b.addEventListener("click", function () { toggle(i); });
     list.appendChild(b);
   });
- 
+
   function toggle(i) {
     const buttons = list.querySelectorAll(".choice");
     const wasOpen = buttons[i].getAttribute("aria-expanded") === "true";
     buttons.forEach(function (b) { b.setAttribute("aria-expanded", "false"); });
     if (wasOpen) { panel.hidden = true; return; }
- 
+
     buttons[i].setAttribute("aria-expanded", "true");
     const it = items[i];
     const links = (it.liens || []).map(function (l) {
-      return '<a class="btn' + (l.alt ? " alt" : "") + '" href="' + l.href + '">' + l.label + "</a>";
+      return '<a class="btn' + (l.alt ? " alt" : "") + '" href="' + l.href + '"' +
+        (l.blank ? ' target="_blank" rel="noopener"' : "") + (l.download ? " download" : "") + ">" + l.label + "</a>";
     }).join("");
     panel.innerHTML =
       "<h3>" + it.titre + "</h3>" +
@@ -375,7 +376,7 @@ document.querySelectorAll(".choices").forEach(function (list) {
     panel.setAttribute("aria-label", it.titre);
   }
 });
- 
+
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
