@@ -1,0 +1,144 @@
+/* ==========================================================
+   ✏️ TON CONTENU : c'est le fichier à modifier pour changer les textes.
+   Chaque élément devient un bouton ; au clic, le détail s'affiche.
+   - titre / resume : texte du bouton
+   - meta           : ligne sous le titre du détail
+   - html           : contenu du détail (paragraphes, listes, tableaux)
+   - lieu           : (expériences) adresse affichée sur une petite carte
+   - liens          : boutons en bas du détail
+   ========================================================== */
+
+/* Fichiers du dossier docs/ (remplace un fichier en gardant le même nom) */
+const PDF_ECG = "docs/compte-rendu-cardiofrequencemetre.pdf";
+const PDF_ECG_NOM = "Compte_rendu_Agneray_cardiofrequencemetre.pdf";
+const SCHEMA_ECG = "docs/schema-fonctionnel-ecg.webp";
+const PDF_SAE = "docs/projet-sae-alarme-ultra-son.pdf";
+const PDF_SAE_NOM = "Projet_SAe_Alarme_Ultra_Son.pdf";
+const GRAPHE_URL = "docs/graphe-etat-alarme.webp";
+const PDF_RELEVE = "docs/releve-de-notes-but1.pdf";
+const PDF_RELEVE_NOM = "Releve_de_notes_BUT1_Agneray_Paul.pdf";
+const RELEVE_LIENS = [
+  { label: "Ouvrir dans un nouvel onglet", href: PDF_RELEVE, blank: true },
+  { label: "Télécharger le PDF", href: PDF_RELEVE, alt: true, download: PDF_RELEVE_NOM }
+];
+/* Le code du jeu vient de docs/code-jeu.js ; ce lien permet de le télécharger en .c */
+const CODE_JEU_URL = URL.createObjectURL(new Blob([CODE_JEU], { type: "text/plain" }));
+
+const DATA = {
+
+  projets: [
+    {
+      titre: "Compte rendu – Cardiofréquencemètre",
+      resume: "Capteur, filtres, mise au format TTL et buzzer",
+      meta: "Projet d'électronique · juin 2026",
+      html: `
+        <figure class="schema">
+          <img src="${SCHEMA_ECG}" alt="Schéma fonctionnel complet du cardiofréquencemètre">
+        </figure>
+        <iframe class="pdf" src="${PDF_ECG}" title="Compte rendu du cardiofréquencemètre (PDF)"></iframe>
+        <p class="empty">Le PDF ne s'affiche pas ? Ouvre-le avec le premier bouton ci-dessous.</p>`,
+      liens: [
+        { label: "Ouvrir dans un nouvel onglet", href: PDF_ECG, blank: true },
+        { label: "Télécharger le PDF", href: PDF_ECG, alt: true, download: PDF_ECG_NOM }
+      ]
+    },
+    {
+      titre: "Code du jeu Bandit Manchot",
+      resume: "Jeu programmé en binôme en 1/2 journée",
+      meta: "Programmation en C",
+      html: `
+        <p>Voici un exemple de code que moi et un camarade avons été capables de fournir en un temps court.</p>
+        <ul>
+          <li>Crédit de mon camarade : Dorian Millot</li>
+        </ul>
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" class="tab on" data-tab="jeu" aria-selected="true">Essayer le jeu</button>
+          <button type="button" role="tab" class="tab" data-tab="code" aria-selected="false">Lire le code C</button>
+        </div>
+        <div class="tabpanel" data-panel="jeu">
+          <p class="note">Reproduction en JavaScript du programme C : mêmes rouleaux, mêmes règles. Le programme d'origine se lance dans un terminal, avec la bibliothèque cs50.</p>
+          <div class="jeu">
+            <pre class="jeu-combos"></pre>
+            <p class="jeu-capital"></p>
+            <div class="jeu-reels" aria-label="Rouleaux"></div>
+            <p class="jeu-msg" aria-live="polite"></p>
+            <div class="jeu-actions"></div>
+          </div>
+        </div>
+        <div class="tabpanel" data-panel="code" hidden>
+          <pre class="code"><code></code></pre>
+        </div>`,
+      init: initJeu,
+      liens: [{ label: "Télécharger le code (.c)", href: CODE_JEU_URL, download: "bandit_manchot.c" }]
+    },
+    {
+      titre: "Code SAé et graphe d'état",
+      resume: "Alarme ultra son : graphe d'état et présentation",
+      meta: "Projet SAé · en binôme avec Dorian Millot · juin 2026",
+      html: `
+        <p>Projet SAé « Alarme ultra son » : graphe d'état, puis présentation avec synoptique, schéma structurel, zooms techniques (clavier matriciel, timer) et bilan.</p>
+        <figure class="schema">
+          <a href="${GRAPHE_URL}" target="_blank" rel="noopener" title="Ouvrir en grand"><img src="${GRAPHE_URL}" alt="Graphe d'état de l'alarme ultra son"></a>
+          <figcaption>Graphe d'état de l'alarme (clique pour l'ouvrir en grand).</figcaption>
+        </figure>
+        ${pdfViewer(PDF_SAE, "Présentation du projet SAé : Alarme ultra son (PDF)")}`,
+      liens: [
+        { label: "Ouvrir dans un nouvel onglet", href: PDF_SAE, blank: true },
+        { label: "Télécharger le PDF", href: PDF_SAE, alt: true, download: PDF_SAE_NOM }
+      ]
+    }
+  ],
+
+  bulletin: [
+    { titre: "Semestre 1 & 2", resume: "Classement : 9", meta: "Première année", html: releveHtml(), liens: RELEVE_LIENS },
+    { titre: "Semestre 3 & 4", resume: "En cours…", meta: "Deuxième année", html: "<p>En cours…</p>", liens: [] }
+  ],
+
+  /* ✏️ Descriptions à compléter : écris ton texte dans html (ex. html: "<p>Mes missions…</p>") */
+  experience: [
+    {
+      titre: "Caissier",
+      resume: "Carrefour · Temps partiel",
+      meta: "Nov. 2025 – août 2026 (10 mois) · Annecy, Auvergne-Rhône-Alpes, France · Sur site",
+      lieu: "Carrefour, avenue de Genève, Annecy-le-Vieux, France",
+      html: "",
+      liens: []
+    },
+    {
+      titre: "Poissonnier",
+      resume: "E.Leclerc Crozon · CDD",
+      meta: "Juil. 2024 – août 2024 (2 mois) · Crozon, Bretagne, France · Sur site",
+      lieu: "E.Leclerc, Crozon, France",
+      html: "",
+      liens: []
+    },
+    {
+      titre: "Stagiaire",
+      resume: "Dubler Toiture SA · Stage",
+      meta: "Juin 2024 – juil. 2024 (2 mois) · Grens, Vaud, Suisse · Hybride",
+      lieu: "Chem. du Chalet 10, 1274 Grens, Suisse",
+      html: "",
+      liens: []
+    },
+    {
+      titre: "Maraîcher/responsable de vente",
+      resume: "EARL La Ferme des Bioux · Temps partiel",
+      meta: "Avr. 2022 – juil. 2022 (4 mois) · Ferney-Voltaire, Auvergne-Rhône-Alpes, France · Sur site",
+      lieu: "Marché de Ferney-Voltaire, France",
+      html: "",
+      liens: []
+    }
+  ],
+
+  /* ✏️ Passions : descriptions à compléter */
+  passions: [
+    { titre: "Golf", resume: "Sport", meta: "", html: "", liens: [] },
+    { titre: "JJB", resume: "Jiu-jitsu brésilien", meta: "", html: "", liens: [] }
+  ]
+};
+
+/* Contenu du détail « Semestre 1 & 2 » */
+function releveHtml() {
+  return '<p>Classement : <b>9</b></p>' +
+    pdfViewer(PDF_RELEVE, "Relevé de notes de première année (PDF)");
+}

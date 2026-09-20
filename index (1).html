@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paul Agneray – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Navigation principale">
+  <ul>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#bulletin">Bulletin</a></li>
+    <li><a href="#experience">Expérience pro</a></li>
+    <li><a href="#about">Qui suis-je</a></li>
+  </ul>
+</nav>
+
+<main>
+  <header class="hero">
+    <h1>Paul Agneray</h1>
+    <p>Étudiant en BUT GEII, parcours Électronique et Systèmes Embarqués, à l'IUT d'Annecy.</p>
+
+    <!-- Signal carré reconstruit par une série de Fourier : chaque harmonique a sa couleur -->
+    <figure class="fourier">
+      <svg id="f-svg" viewBox="0 14 1000 232" role="img" aria-label="Somme de sinusoïdes impaires qui tend vers un signal carré">
+        <line class="f-zero" x1="0" y1="130" x2="1000" y2="130"/>
+        <path class="f-carre" d="M0,130 V42 H250 V218 H500 V42 H750 V218 H1000"/>
+        <g id="f-harm"></g>
+        <path id="f-somme" class="f-somme"/>
+      </svg>
+
+      <div class="f-controls">
+        <button type="button" id="f-play" class="btn alt mini">Pause</button>
+        <label for="f-n">Harmoniques&nbsp;: <output id="f-nout">1</output></label>
+        <input type="range" id="f-n" min="1" max="9" step="1" value="1">
+      </div>
+
+      <div class="f-formule">
+        <math display="block">
+          <mrow>
+            <mi>s</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo>
+            <mfrac><mn>4</mn><mi>π</mi></mfrac>
+            <munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover>
+            <mfrac>
+              <mrow><mi>sin</mi><mo>(</mo><mo>(</mo><mn>2</mn><mi>k</mi><mo>−</mo><mn>1</mn><mo>)</mo><mi>ω</mi><mi>t</mi><mo>)</mo></mrow>
+              <mrow><mn>2</mn><mi>k</mi><mo>−</mo><mn>1</mn></mrow>
+            </mfrac>
+          </mrow>
+        </math>
+        <math display="block" id="f-termes"></math>
+      </div>
+
+    </figure>
+  </header>
+
+  <section id="projets" aria-labelledby="t-projets">
+    <h2 id="t-projets">Projets</h2>
+    <p class="intro">Clique sur un projet pour voir le détail.</p>
+    <div class="choices" data-key="projets"></div>
+    <div class="detail" hidden></div>
+  </section>
+
+  <section id="bulletin" aria-labelledby="t-bulletin">
+    <h2 id="t-bulletin">Bulletin</h2>
+    <p class="intro">Mes résultats, semestre par semestre.</p>
+    <div class="choices" data-key="bulletin"></div>
+    <div class="detail" hidden></div>
+  </section>
+
+  <section id="experience" aria-labelledby="t-experience">
+    <h2 id="t-experience">Expérience professionnelle</h2>
+    <p class="intro">Mes stages et emplois, avec les missions confiées.</p>
+    <div class="choices" data-key="experience"></div>
+    <div class="detail" hidden></div>
+  </section>
+
+  <section id="about" aria-labelledby="t-about">
+    <h2 id="t-about">Qui suis-je</h2>
+    <p class="intro">Ma présentation, en complément de mon CV.</p>
+    <div class="about">
+      <div class="card">
+        <h3>Présentation</h3>
+        <!-- ✏️ À personnaliser -->
+        <p>Je m'appelle Paul, je suis en deuxième année de BUT Génie Électrique et Informatique Industrielle (GEII), parcours Électronique et Systèmes Embarqués (ESE), à l'IUT d'Annecy (Université Savoie Mont Blanc).</p>
+        <p>Je travaille sur l'électronique, le traitement du signal, les systèmes embarqués et l'automatisme industriel, de la conception d'une chaîne analogique à la programmation d'un système numérique.</p>
+        <ul class="chips" aria-label="Compétences">
+          <li>Électronique analogique</li>
+          <li>Traitement du signal</li>
+          <li>Systèmes embarqués</li>
+          <li>Automatisme industriel</li>
+          <li>Documentation technique (LaTeX)</li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="cv.pdf" download>Télécharger mon CV</a>
+          <!-- ✏️ Remplace par l'adresse de ton profil LinkedIn -->
+          <a class="btn alt" href="https://www.linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+          <button type="button" class="btn alt" id="copier-mail" data-mail="Paul.Agneray@etu.univ-savoie.fr" title="Copier mon adresse e-mail">Me contacter</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Formation</h3>
+        <ol class="timeline">
+          <li><b>BUT GEII, 2ᵉ année, parcours ESE</b><small>IUT d'Annecy, Université Savoie Mont Blanc</small></li>
+          <li><b>BUT GEII, 1ʳᵉ année</b><small>IUT d'Annecy, Université Savoie Mont Blanc</small></li>
+          <!-- ✏️ Ajoute ici ton parcours avant le BUT (bac, etc.) -->
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sous-titre">Passions</h3>
+    <div class="choices" data-key="passions"></div>
+    <div class="detail" hidden></div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> Paul Agneray</footer>
+<!-- Les textes sont dans js/contenu.js, l'apparence dans css/style.css -->
+<script src="docs/code-jeu.js"></script>
+<script src="js/outils.js"></script>
+<script src="js/jeu.js"></script>
+<script src="js/contenu.js"></script>
+<script src="js/site.js"></script>
+<script src="js/fourier.js"></script>
+</body>
+</html>
