@@ -1,26 +1,382 @@
+
+Index · HTML
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Paul Agneray</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paul Agneray – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1f5f3;
+    --panel: #fbfdfc;
+    --ink: #16232b;
+    --ink-soft: #4b5e66;
+    --grid: #d3e0db;
+    --trace: #0a7c86;
+    --mark: #d9950b;
+    --line: #b9cbc4;
+    --head: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+    --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101a1e;
+      --panel: #16242a;
+      --ink: #e4eeea;
+      --ink-soft: #9db2ab;
+      --grid: #1d2e34;
+      --trace: #4fd1c5;
+      --mark: #f0b429;
+      --line: #2b4149;
+    }
+  }
+ 
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+  body {
+    margin: 0;
+    font: 400 1.0625rem/1.65 var(--body);
+    color: var(--ink);
+    background-color: var(--paper);
+    /* papier millimétré */
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  a { color: var(--trace); }
+  :focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; border-radius: 4px; }
+ 
+  /* Navigation */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav ul {
+    display: flex; gap: .25rem; flex-wrap: wrap;
+    max-width: 62rem; margin: 0 auto; padding: .6rem 1.25rem;
+    list-style: none;
+  }
+  .nav a {
+    display: block; padding: .35rem .8rem; border-radius: 999px;
+    font: 500 .95rem var(--body); color: var(--ink); text-decoration: none;
+  }
+  .nav a:hover { background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); }
+ 
+  main { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
+ 
+  /* En-tête */
+  .hero { padding: 3.5rem 0 1rem; }
+  .hero h1 {
+    margin: 0; font: 700 clamp(2.4rem, 7vw, 4.2rem)/1.05 var(--head); letter-spacing: -.02em;
+  }
+  .hero p { margin: .8rem 0 0; max-width: 40rem; color: var(--ink-soft); }
+  .wave { display: block; width: 100%; height: 90px; margin-top: 1.6rem; }
+  .wave path { fill: none; stroke: var(--trace); stroke-width: 2.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+ 
+  /* Sections */
+  section { padding-top: 3.5rem; }
+  section > h2 { margin: 0 0 .4rem; font: 700 2rem/1.15 var(--head); letter-spacing: -.01em; }
+  .intro { margin: 0 0 1.4rem; color: var(--ink-soft); max-width: 40rem; }
+ 
+  /* Boutons de choix */
+  .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .9rem; }
+  .choice {
+    all: unset; box-sizing: border-box; cursor: pointer;
+    display: block; padding: 1rem 1.1rem 1rem 1.25rem;
+    background: var(--panel); border: 1px solid var(--line); border-left: 6px solid var(--line);
+    border-radius: 6px;
+    transition: border-color .15s, transform .15s;
+  }
+  .choice:hover { border-left-color: var(--trace); }
+  .choice[aria-expanded="true"] { border-left-color: var(--mark); border-color: var(--mark); }
+  .choice:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+  .choice strong { display: block; font: 700 1.15rem/1.3 var(--head); }
+  .choice span { display: block; margin-top: .25rem; font-size: .93rem; line-height: 1.45; color: var(--ink-soft); }
+ 
+  /* Panneau de détail */
+  .detail {
+    margin-top: 1rem; padding: 1.5rem 1.6rem;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+    animation: open .2s ease-out;
+  }
+  .detail[hidden] { display: none; }
+  .detail h3 { margin: 0 0 .2rem; font: 700 1.5rem/1.25 var(--head); }
+  .detail .meta { margin: 0 0 1rem; color: var(--ink-soft); font-size: .95rem; }
+  .detail p { margin: 0 0 1rem; max-width: 42rem; }
+  .detail ul { margin: 0 0 1.2rem; padding-left: 1.2rem; max-width: 42rem; }
+  .detail li { margin-bottom: .3rem; }
+  .detail table { border-collapse: collapse; margin: 0 0 1.2rem; min-width: min(100%, 26rem); }
+  .detail th, .detail td { text-align: left; padding: .45rem 1.2rem .45rem 0; border-bottom: 1px solid var(--line); }
+  .detail th { font-weight: 500; }
+  .empty { color: var(--ink-soft); font-size: .95rem; margin-top: .9rem; }
+  @keyframes open { from { opacity: 0; } to { opacity: 1; } }
+ 
+  .links { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .btn {
+    display: inline-block; padding: .55rem 1.1rem; border-radius: 6px;
+    background: var(--trace); color: var(--panel); font: 500 .95rem var(--body); text-decoration: none;
+  }
+  .btn:hover { filter: brightness(1.12); }
+  .btn.alt { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+ 
+  /* Qui suis-je */
+  .about {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.2rem;
+  }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 1.5rem 1.6rem; }
+  .card h3 { margin: 0 0 .8rem; font: 700 1.25rem var(--head); }
+  .card p { margin: 0 0 1rem; }
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--trace); }
+  .timeline li { position: relative; margin-bottom: 1rem; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -1.5rem; top: .55rem;
+    width: .65rem; height: .65rem; border-radius: 50%; background: var(--mark);
+  }
+  .timeline b { display: block; font-family: var(--head); font-size: 1.05rem; }
+  .timeline small { color: var(--ink-soft); font-size: .92rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0 0 1.2rem; list-style: none; }
+  .chips li { padding: .25rem .75rem; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); font-size: .93rem; }
+ 
+  footer { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 3rem; color: var(--ink-soft); font-size: .9rem; }
+ 
+  @media (max-width: 720px) { .about { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .detail { animation: none; }
+    .choice { transition: none; }
+  }
+</style>
 </head>
 <body>
+ 
+<nav class="nav" aria-label="Navigation principale">
+  <ul>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#bulletin">Bulletin</a></li>
+    <li><a href="#experience">Expérience pro</a></li>
+    <li><a href="#about">Qui suis-je</a></li>
+  </ul>
+</nav>
+ 
+<main>
+  <header class="hero">
     <h1>Paul Agneray</h1>
-    <h2>Étudiant en BUT GEII – Parcours ESE</h2>
-
-    <p>
-        Bienvenue sur mon portfolio.
-        Je suis étudiant en Électronique et Systèmes Embarqués.
-    </p>
-
-    <h3>Mes domaines</h3>
-    <ul>
-        <li>Électronique</li>
-        <li>Systèmes embarqués</li>
-        <li>Programmation</li>
-        <li>Automatisme</li>
-    </ul>
-
-    <p>🚧 Portfolio en construction...</p>
+    <p>Étudiant en BUT GEII, parcours Électronique et Systèmes Embarqués, à l'IUT d'Annecy.</p>
+    <!-- Signal analogique puis signal numérique -->
+    <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 60 C 50 0, 100 0, 150 60 S 250 120, 300 60 S 400 0, 450 60 S 550 120, 600 60 L600 20 H700 V100 H800 V20 H900 V100 H1000 V20 H1100 V100 H1200"/>
+    </svg>
+  </header>
+ 
+  <section id="projets" aria-labelledby="t-projets">
+    <h2 id="t-projets">Projets</h2>
+    <p class="intro">Clique sur un projet pour voir le détail.</p>
+    <div class="choices" data-key="projets"></div>
+    <div class="detail" hidden></div>
+  </section>
+ 
+  <section id="bulletin" aria-labelledby="t-bulletin">
+    <h2 id="t-bulletin">Bulletin</h2>
+    <p class="intro">Mes résultats, semestre par semestre.</p>
+    <div class="choices" data-key="bulletin"></div>
+    <div class="detail" hidden></div>
+  </section>
+ 
+  <section id="experience" aria-labelledby="t-experience">
+    <h2 id="t-experience">Expérience professionnelle</h2>
+    <p class="intro">Mes stages et emplois, avec les missions confiées.</p>
+    <div class="choices" data-key="experience"></div>
+    <div class="detail" hidden></div>
+  </section>
+ 
+  <section id="about" aria-labelledby="t-about">
+    <h2 id="t-about">Qui suis-je</h2>
+    <p class="intro">Ma présentation, en complément de mon CV.</p>
+    <div class="about">
+      <div class="card">
+        <h3>Présentation</h3>
+        <!-- ✏️ À personnaliser -->
+        <p>Je m'appelle Paul, je suis en deuxième année de BUT Génie Électrique et Informatique Industrielle (GEII), parcours Électronique et Systèmes Embarqués (ESE), à l'IUT d'Annecy (Université Savoie Mont Blanc).</p>
+        <p>Je travaille sur l'électronique, le traitement du signal, les systèmes embarqués et l'automatisme industriel, de la conception d'une chaîne analogique à la programmation d'un système numérique.</p>
+        <ul class="chips" aria-label="Compétences">
+          <li>Électronique analogique</li>
+          <li>Traitement du signal</li>
+          <li>Systèmes embarqués</li>
+          <li>Automatisme industriel</li>
+          <li>Documentation technique (LaTeX)</li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="cv.pdf" download>Télécharger mon CV</a>
+          <a class="btn alt" href="mailto:Paul.Agneray@etu.univ-savoie.fr">Me contacter</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Formation</h3>
+        <ol class="timeline">
+          <li><b>BUT GEII, 2ᵉ année, parcours ESE</b><small>IUT d'Annecy, Université Savoie Mont Blanc</small></li>
+          <li><b>BUT GEII, 1ʳᵉ année</b><small>IUT d'Annecy, Université Savoie Mont Blanc</small></li>
+          <!-- ✏️ Ajoute ici ton parcours avant le BUT (bac, etc.) -->
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+ 
+<footer>© <span id="year"></span> Paul Agneray</footer>
+ 
+<script>
+/* ==========================================================
+   ✏️ TON CONTENU : modifie uniquement cette partie.
+   Chaque élément devient un bouton ; au clic, le détail s'affiche.
+   - titre / resume : texte du bouton
+   - meta           : ligne sous le titre du détail
+   - html           : contenu du détail (paragraphes, listes, tableaux)
+   - liens          : boutons en bas du détail (fichiers à mettre dans le dossier du site)
+   ========================================================== */
+const DATA = {
+ 
+  projets: [
+    {
+      titre: "Compte rendu – Projet électrocardiogramme",
+      resume: "Chaîne d'acquisition du signal cardiaque",
+      meta: "Projet d'électronique analogique",
+      html: `
+        <p>Étude et réalisation d'une chaîne d'acquisition du signal cardiaque : de la mesure aux étages d'amplification et de filtrage.</p>
+        <ul>
+          <li>Objectif du projet et cahier des charges</li>
+          <li>Schémas et choix des composants</li>
+          <li>Simulations et mesures</li>
+          <li>Résultats et conclusion</li>
+        </ul>`,
+      liens: [{ label: "Lire le compte rendu (PDF)", href: "docs/compte-rendu-ecg.pdf" }]
+    },
+    {
+      titre: "Code de mon jeu",
+      resume: "Jeu programmé par mes soins",
+      meta: "Programmation",
+      html: `
+        <p>Présentation du jeu : principe, règles, et choix de programmation.</p>
+        <ul>
+          <li>Langage et outils utilisés</li>
+          <li>Structure du code</li>
+          <li>Difficultés rencontrées</li>
+        </ul>`,
+      liens: [{ label: "Voir le code", href: "#" }]
+    },
+    {
+      titre: "Code SA et graphe d'état",
+      resume: "Programme et modélisation par graphe d'état",
+      meta: "Systèmes automatisés",
+      html: `
+        <p>Programme d'un système automatisé et son graphe d'état associé.</p>
+        <ul>
+          <li>Description du système</li>
+          <li>Graphe d'état : états, transitions, conditions</li>
+          <li>Implémentation du code</li>
+        </ul>`,
+      liens: [
+        { label: "Voir le code", href: "#" },
+        { label: "Voir le graphe d'état", href: "#", alt: true }
+      ]
+    }
+  ],
+ 
+  bulletin: [
+    { titre: "Semestre 1", resume: "BUT 1", meta: "Première année", html: bulletinTable(), liens: [{ label: "Bulletin (PDF)", href: "docs/bulletin-s1.pdf" }] },
+    { titre: "Semestre 2", resume: "BUT 1", meta: "Première année", html: bulletinTable(), liens: [{ label: "Bulletin (PDF)", href: "docs/bulletin-s2.pdf" }] },
+    { titre: "Semestre 3", resume: "BUT 2, parcours ESE", meta: "Deuxième année", html: bulletinTable(), liens: [{ label: "Bulletin (PDF)", href: "docs/bulletin-s3.pdf" }] },
+    { titre: "Semestre 4", resume: "BUT 2, parcours ESE", meta: "Deuxième année", html: bulletinTable(), liens: [{ label: "Bulletin (PDF)", href: "docs/bulletin-s4.pdf" }] }
+  ],
+ 
+  experience: [
+    {
+      titre: "Expérience 1",
+      resume: "Poste, entreprise",
+      meta: "Entreprise · Lieu · Période",
+      html: `
+        <p>Contexte de l'expérience : ce que fait l'entreprise, ton rôle.</p>
+        <ul>
+          <li>Mission 1</li>
+          <li>Mission 2</li>
+          <li>Compétences acquises</li>
+        </ul>`,
+      liens: []
+    },
+    {
+      titre: "Expérience 2",
+      resume: "Poste, entreprise",
+      meta: "Entreprise · Lieu · Période",
+      html: `
+        <p>Contexte de l'expérience : ce que fait l'entreprise, ton rôle.</p>
+        <ul>
+          <li>Mission 1</li>
+          <li>Mission 2</li>
+          <li>Compétences acquises</li>
+        </ul>`,
+      liens: []
+    }
+  ]
+};
+ 
+/* Modèle de tableau pour le bulletin : remplace « … » par tes vraies notes */
+function bulletinTable() {
+  return `
+    <table>
+      <tr><th>Moyenne générale</th><td>…</td></tr>
+      <tr><th>Électronique</th><td>…</td></tr>
+      <tr><th>Informatique industrielle</th><td>…</td></tr>
+      <tr><th>Mathématiques et signal</th><td>…</td></tr>
+    </table>`;
+}
+ 
+/* ==========================================================
+   Fonctionnement (pas besoin de modifier)
+   ========================================================== */
+document.querySelectorAll(".choices").forEach(function (list) {
+  const key = list.dataset.key;
+  const panel = list.nextElementSibling;
+  const items = DATA[key];
+ 
+  items.forEach(function (item, i) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "choice";
+    b.setAttribute("aria-expanded", "false");
+    b.innerHTML = "<strong>" + item.titre + "</strong><span>" + item.resume + "</span>";
+    b.addEventListener("click", function () { toggle(i); });
+    list.appendChild(b);
+  });
+ 
+  function toggle(i) {
+    const buttons = list.querySelectorAll(".choice");
+    const wasOpen = buttons[i].getAttribute("aria-expanded") === "true";
+    buttons.forEach(function (b) { b.setAttribute("aria-expanded", "false"); });
+    if (wasOpen) { panel.hidden = true; return; }
+ 
+    buttons[i].setAttribute("aria-expanded", "true");
+    const it = items[i];
+    const links = (it.liens || []).map(function (l) {
+      return '<a class="btn' + (l.alt ? " alt" : "") + '" href="' + l.href + '">' + l.label + "</a>";
+    }).join("");
+    panel.innerHTML =
+      "<h3>" + it.titre + "</h3>" +
+      '<p class="meta">' + it.meta + "</p>" +
+      it.html +
+      (links ? '<div class="links">' + links + "</div>" : "");
+    panel.hidden = false;
+    panel.setAttribute("role", "region");
+    panel.setAttribute("aria-label", it.titre);
+  }
+});
+ 
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
