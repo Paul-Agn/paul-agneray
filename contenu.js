@@ -115,7 +115,7 @@ const DATA = {
     {
       titre: "Stagiaire",
       resume: "Dubler Toiture SA · Stage",
-      meta: "Juin 2024 – juil. 2024 (2 mois) · Grens, Vaud, Suisse · Hybride",
+      meta: "Juil. 2024 – juil. 2024 (2 semaines) · Grens, Vaud, Suisse · Hybride",
       lieu: "Chem. du Chalet 10, 1274 Grens, Suisse",
       html: "",
       liens: []
