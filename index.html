@@ -7,7 +7,43 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<script>
+/* Si un fichier du site ne se charge pas, un message l'indique en haut de la page */
+(function () {
+  const problemes = [];
+  function afficher() {
+    if (!document.body) { document.addEventListener("DOMContentLoaded", afficher); return; }
+    let b = document.getElementById("diagnostic");
+    if (!b) {
+      b = document.createElement("div");
+      b.id = "diagnostic";
+      b.setAttribute("role", "alert");
+      b.style.cssText = "padding:12px 16px;background:#fff3cd;color:#5c4400;border-bottom:2px solid #d9950b;font:15px/1.5 system-ui,sans-serif;";
+      document.body.insertBefore(b, document.body.firstChild);
+    }
+    b.textContent = "";
+    const t = document.createElement("strong");
+    t.textContent = "Le site n'a pas pu se charger correctement.";
+    b.appendChild(t);
+    problemes.filter(function (p, i) { return problemes.indexOf(p) === i; }).forEach(function (p) {
+      const l = document.createElement("div"); l.textContent = "• " + p; b.appendChild(l);
+    });
+    const c = document.createElement("div");
+    c.textContent = "Vérifie que ces fichiers sont bien dans le dépôt GitHub, au même endroit que index.html.";
+    b.appendChild(c);
+  }
+  window.addEventListener("error", function (e) {
+    const el = e.target;
+    if (el && el !== window && (el.src || el.href)) {
+      const f = el.getAttribute("src") || el.getAttribute("href");
+      if (/^https?:/.test(f)) return;   // fichier externe (polices Google) : on ignore
+      problemes.push("fichier introuvable : " + f);
+    } else if (e.message) problemes.push("erreur : " + e.message + (e.filename ? " (" + e.filename.split("/").slice(-2).join("/") + ")" : ""));
+    afficher();
+  }, true);
+})();
+</script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -119,12 +155,12 @@
 </main>
 
 <footer>© <span id="year"></span> Paul Agneray</footer>
-<!-- Les textes sont dans js/contenu.js, l'apparence dans css/style.css -->
-<script src="docs/code-jeu.js"></script>
-<script src="js/outils.js"></script>
-<script src="js/jeu.js"></script>
-<script src="js/contenu.js"></script>
-<script src="js/site.js"></script>
-<script src="js/fourier.js"></script>
+<!-- Les textes sont dans contenu.js, l'apparence dans style.css -->
+<script src="code-jeu.js"></script>
+<script src="outils.js"></script>
+<script src="jeu.js"></script>
+<script src="contenu.js"></script>
+<script src="site.js"></script>
+<script src="fourier.js"></script>
 </body>
 </html>
