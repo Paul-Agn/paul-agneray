@@ -8,21 +8,21 @@
    - liens          : boutons en bas du détail
    ========================================================== */
 
-/* Fichiers du dossier docs/ (remplace un fichier en gardant le même nom) */
-const PDF_ECG = "docs/compte-rendu-cardiofrequencemetre.pdf";
+/* Fichiers du site, à côté de index.html (pour en remplacer un, garde le même nom) */
+const PDF_ECG = "compte-rendu-cardiofrequencemetre.pdf";
 const PDF_ECG_NOM = "Compte_rendu_Agneray_cardiofrequencemetre.pdf";
-const SCHEMA_ECG = "docs/schema-fonctionnel-ecg.webp";
-const PDF_SAE = "docs/projet-sae-alarme-ultra-son.pdf";
+const SCHEMA_ECG = "schema-fonctionnel-ecg.webp";
+const PDF_SAE = "projet-sae-alarme-ultra-son.pdf";
 const PDF_SAE_NOM = "Projet_SAe_Alarme_Ultra_Son.pdf";
-const GRAPHE_URL = "docs/graphe-etat-alarme.webp";
-const PDF_RELEVE = "docs/releve-de-notes-but1.pdf";
+const GRAPHE_URL = "graphe-etat-alarme.webp";
+const PDF_RELEVE = "releve-de-notes-but1.pdf";
 const PDF_RELEVE_NOM = "Releve_de_notes_BUT1_Agneray_Paul.pdf";
 const RELEVE_LIENS = [
   { label: "Ouvrir dans un nouvel onglet", href: PDF_RELEVE, blank: true },
   { label: "Télécharger le PDF", href: PDF_RELEVE, alt: true, download: PDF_RELEVE_NOM }
 ];
-/* Le code du jeu vient de docs/code-jeu.js ; ce lien permet de le télécharger en .c */
-const CODE_JEU_URL = URL.createObjectURL(new Blob([CODE_JEU], { type: "text/plain" }));
+/* Le code du jeu vient de code-jeu.js ; ce lien permet de le télécharger en .c */
+const CODE_JEU_URL = typeof CODE_JEU === "string" ? URL.createObjectURL(new Blob([CODE_JEU], { type: "text/plain" })) : "#";
 
 const DATA = {
 
@@ -115,7 +115,7 @@ const DATA = {
     {
       titre: "Stagiaire",
       resume: "Dubler Toiture SA · Stage",
-      meta: "Juil. 2024 – juil. 2024 (2 semaines) · Grens, Vaud, Suisse · Hybride",
+      meta: "Juin 2024 – juil. 2024 (2 mois) · Grens, Vaud, Suisse · Hybride",
       lieu: "Chem. du Chalet 10, 1274 Grens, Suisse",
       html: "",
       liens: []
