@@ -100,7 +100,7 @@ const DATA = {
       titre: "Caissier",
       resume: "Carrefour · Temps partiel",
       meta: "Nov. 2025 – août 2026 (10 mois) · Annecy, Auvergne-Rhône-Alpes, France · Sur site",
-      lieu: "Carrefour, avenue de Genève, Annecy-le-Vieux, France",
+      lieu: "134 Av. de Genève, 74000 Annecy",
       html: "",
       liens: []
     },
@@ -108,7 +108,7 @@ const DATA = {
       titre: "Poissonnier",
       resume: "E.Leclerc Crozon · CDD",
       meta: "Juil. 2024 – août 2024 (2 mois) · Crozon, Bretagne, France · Sur site",
-      lieu: "E.Leclerc, Crozon, France",
+      lieu: "7 route de Penandreff, 29160 Crozon",
       html: "",
       liens: []
     },
@@ -124,7 +124,7 @@ const DATA = {
       titre: "Maraîcher/responsable de vente",
       resume: "EARL La Ferme des Bioux · Temps partiel",
       meta: "Avr. 2022 – juil. 2022 (4 mois) · Ferney-Voltaire, Auvergne-Rhône-Alpes, France · Sur site",
-      lieu: "Marché de Ferney-Voltaire, France",
+      lieu: "Av. Voltaire, 01210 Ferney-Voltaire",
       html: "",
       liens: []
     }
