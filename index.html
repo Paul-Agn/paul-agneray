@@ -60,40 +60,8 @@
   <header class="hero">
     <h1>Paul Agneray</h1>
     <p>Étudiant en BUT GEII, parcours Électronique et Systèmes Embarqués, à l'IUT d'Annecy.</p>
-
-    <!-- Signal carré reconstruit par une série de Fourier : chaque harmonique a sa couleur -->
-    <figure class="fourier">
-      <svg id="f-svg" viewBox="0 14 1000 232" role="img" aria-label="Somme de sinusoïdes impaires qui tend vers un signal carré">
-        <line class="f-zero" x1="0" y1="130" x2="1000" y2="130"/>
-        <path class="f-carre" d="M0,130 V42 H250 V218 H500 V42 H750 V218 H1000"/>
-        <g id="f-harm"></g>
-        <path id="f-somme" class="f-somme"/>
-      </svg>
-
-      <div class="f-controls">
-        <button type="button" id="f-play" class="btn alt mini">Pause</button>
-        <label for="f-n">Harmoniques&nbsp;: <output id="f-nout">1</output></label>
-        <input type="range" id="f-n" min="1" max="9" step="1" value="1">
-      </div>
-
-      <div class="f-formule">
-        <math display="block">
-          <mrow>
-            <mi>s</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo>
-            <mfrac><mn>4</mn><mi>π</mi></mfrac>
-            <munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover>
-            <mfrac>
-              <mrow><mi>sin</mi><mo>(</mo><mo>(</mo><mn>2</mn><mi>k</mi><mo>−</mo><mn>1</mn><mo>)</mo><mi>ω</mi><mi>t</mi><mo>)</mo></mrow>
-              <mrow><mn>2</mn><mi>k</mi><mo>−</mo><mn>1</mn></mrow>
-            </mfrac>
-          </mrow>
-        </math>
-        <math display="block" id="f-termes"></math>
-      </div>
-
-    </figure>
   </header>
-
+  
   <section id="projets" aria-labelledby="t-projets">
     <h2 id="t-projets">Projets</h2>
     <p class="intro">Clique sur un projet pour voir le détail.</p>
@@ -152,7 +120,43 @@
     <div class="choices" data-key="passions"></div>
     <div class="detail" hidden></div>
   </section>
+
+ <section aria-label="Signal carré">
+   </section>
+    <!-- Signal carré reconstruit par une série de Fourier : chaque harmonique a sa couleur -->
+    <figure class="fourier">
+      <svg id="f-svg" viewBox="0 14 1000 232" role="img" aria-label="Somme de sinusoïdes impaires qui tend vers un signal carré">
+        <line class="f-zero" x1="0" y1="130" x2="1000" y2="130"/>
+        <path class="f-carre" d="M0,130 V42 H250 V218 H500 V42 H750 V218 H1000"/>
+        <g id="f-harm"></g>
+        <path id="f-somme" class="f-somme"/>
+      </svg>
+
+      <div class="f-controls">
+        <button type="button" id="f-play" class="btn alt mini">Pause</button>
+        <label for="f-n">Harmoniques&nbsp;: <output id="f-nout">1</output></label>
+        <input type="range" id="f-n" min="1" max="9" step="1" value="1">
+      </div>
+
+      <div class="f-formule">
+        <math display="block">
+          <mrow>
+            <mi>s</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo>
+            <mfrac><mn>4</mn><mi>π</mi></mfrac>
+            <munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover>
+            <mfrac>
+              <mrow><mi>sin</mi><mo>(</mo><mo>(</mo><mn>2</mn><mi>k</mi><mo>−</mo><mn>1</mn><mo>)</mo><mi>ω</mi><mi>t</mi><mo>)</mo></mrow>
+              <mrow><mn>2</mn><mi>k</mi><mo>−</mo><mn>1</mn></mrow>
+            </mfrac>
+          </mrow>
+        </math>
+        <math display="block" id="f-termes"></math>
+      </div>
+
+    </figure>
 </main>
+  
+
 
 <footer>© <span id="year"></span> Paul Agneray</footer>
 <!-- Les textes sont dans contenu.js, l'apparence dans style.css -->
