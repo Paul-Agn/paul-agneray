@@ -32,7 +32,7 @@ document.querySelectorAll(".choices").forEach(function (list) {
       "<h3>" + it.titre + "</h3>" +
       (it.meta ? '<p class="meta">' + it.meta + "</p>" : "") +
       it.html +
-      (it.lieu ? carteHtml(it.lieu) : "") +
+      (it.lieu ? carteHtml(it.lieu, it.coords) : "") +
       (links ? '<div class="links">' + links + "</div>" : "");
     panel.hidden = false;
     panel.setAttribute("role", "region");
