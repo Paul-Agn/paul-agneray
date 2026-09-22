@@ -3,7 +3,7 @@
 /* Visionneuse PDF dans la page */
 function pdfViewer(url, titre) {
   return '<iframe class="pdf" src="' + url + '" title="' + titre + '"></iframe>' +
-         '<p class="empty">Le PDF ne s\'affiche pas ? Ouvre-le avec le premier bouton ci-dessous.</p>';
+         '<p class="empty">Le PDF ne s'affiche pas ? Ouvrez-le avec le premier bouton ci-dessous.</p>';
 }
 
 /* Petite carte Google Maps d'un lieu (sans clé d'API) */
