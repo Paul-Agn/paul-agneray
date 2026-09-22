@@ -1,12 +1,13 @@
-  :root {
-    --paper: #f1f5f3;
-    --panel: #fbfdfc;
-    --ink: #16232b;
-    --ink-soft: #4b5e66;
-    --grid: #d3e0db;
-    --trace: #0a7c86;
-    --mark: #d9950b;
-    --line: #b9cbc4;
+:root {
+  --paper: #101a1e;
+  --panel: #16242a;
+  --ink: #e4eeea;
+  --ink-soft: #9db2ab;
+  --grid: #1d2e34;
+  --trace: #4fd1c5;
+  --mark: #f0b429;
+  --line: #2b4149;
+}
     --head: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
     --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
