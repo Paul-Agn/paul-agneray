@@ -12,8 +12,8 @@
 const PDF_ECG = "compte-rendu-cardiofrequencemetre.pdf";
 const PDF_ECG_NOM = "Compte_rendu_Agneray_cardiofrequencemetre.pdf";
 const SCHEMA_ECG = "schema-fonctionnel-ecg.webp";
-const PDF_SAE = "projet-sae-alarme-ultra-son.pdf";
-const PDF_SAE_NOM = "Projet_SAe_Alarme_Ultra_Son.pdf";
+const PDF_SAE = "compte-rendu-sae.pdf";
+const PDF_SAE_NOM = "Compte_rendu_SAe_Alarme_Ultra_Son.pdf";
 const GRAPHE_URL = "graphe-etat-alarme.webp";
 const PDF_RELEVE = "releve-de-notes-but1.pdf";
 const PDF_RELEVE_NOM = "Releve_de_notes_BUT1_Agneray_Paul.pdf";
@@ -73,15 +73,15 @@ const DATA = {
     },
     {
       titre: "Code SAé et graphe d'état",
-      resume: "Alarme ultra son : graphe d'état et présentation",
+      resume: "Alarme ultra son : graphe d'état et compte rendu",
       meta: "Projet SAé · en binôme avec Dorian Millot · juin 2026",
       html: `
-        <p>Projet SAé « Alarme ultra son » : graphe d'état, puis présentation avec synoptique, schéma structurel, zooms techniques (clavier matriciel, timer) et bilan.</p>
+        <p>Projet SAé « Alarme ultra son » : graphe d'état, puis compte rendu</p>
         <figure class="schema">
           <a href="${GRAPHE_URL}" target="_blank" rel="noopener" title="Ouvrir en grand"><img src="${GRAPHE_URL}" alt="Graphe d'état de l'alarme ultra son"></a>
           <figcaption>Graphe d'état de l'alarme (clique pour l'ouvrir en grand).</figcaption>
         </figure>
-        ${pdfViewer(PDF_SAE, "Présentation du projet SAé : Alarme ultra son (PDF)")}`,
+        ${pdfViewer(PDF_SAE, "Compte Rendu SAé Alarme Ultra Son")}`,
       liens: [
         { label: "Ouvrir dans un nouvel onglet", href: PDF_SAE, blank: true },
         { label: "Télécharger le PDF", href: PDF_SAE, alt: true, download: PDF_SAE_NOM }
