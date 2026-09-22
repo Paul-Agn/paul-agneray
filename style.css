@@ -11,18 +11,6 @@
     --head: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
     --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #101a1e;
-      --panel: #16242a;
-      --ink: #e4eeea;
-      --ink-soft: #9db2ab;
-      --grid: #1d2e34;
-      --trace: #4fd1c5;
-      --mark: #f0b429;
-      --line: #2b4149;
-    }
-  }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
