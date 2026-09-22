@@ -87,6 +87,7 @@
   .detail ul { margin: 0 0 1.2rem; padding-left: 1.2rem; max-width: 42rem; }
   .detail li { margin-bottom: .3rem; }
   .detail table { border-collapse: collapse; margin: 0 0 1.2rem; min-width: min(100%, 26rem); }
+  .detail video, .detail img { max-width: 26rem; width: 100%; height: auto; display: block; border-radius: 6px; margin: 0 0 1rem; }
   .detail th, .detail td { text-align: left; padding: .45rem 1.2rem .45rem 0; border-bottom: 1px solid var(--line); }
   .detail th { font-weight: 500; }
   .empty { color: var(--ink-soft); font-size: .95rem; margin-top: .9rem; }
