@@ -56,7 +56,7 @@ const DATA = {
           <button type="button" role="tab" class="tab" data-tab="code" aria-selected="false">Lire le code C</button>
         </div>
         <div class="tabpanel" data-panel="jeu">
-          <p class="note">Reproduction en JavaScript du programme C : mêmes rouleaux, mêmes règles. Le programme d'origine se lance dans un terminal, avec la bibliothèque cs50.</p>
+          <p class="note">Reproduction à l'aide d'une IA en JavaScript de notre programme C : mêmes rouleaux, mêmes règles. Le programme d'origine se lance dans un terminal avec la blibliothèque cs50.</p>
           <div class="jeu">
             <pre class="jeu-combos"></pre>
             <p class="jeu-capital"></p>
