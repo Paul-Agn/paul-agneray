@@ -72,8 +72,8 @@ const DATA = {
       liens: [{ label: "Télécharger le code (.c)", href: CODE_JEU_URL, download: "bandit_manchot.c" }]
     },
     {
-      titre: "Code SAé et graphe d'état",
-      resume: "Alarme ultra son : graphe d'état et compte rendu",
+      titre: "Compte Rendu - Alarme Ultra Son",
+      resume: "Mode séquentielle, graphe d'état et compte rendu",
       meta: "Projet SAé · en binôme avec Dorian Millot · juin 2026",
       html: `
         <p>Projet SAé « Alarme ultra son » : graphe d'état, puis compte rendu</p>
