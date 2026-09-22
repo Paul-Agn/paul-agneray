@@ -139,15 +139,15 @@ passions: [
     titre: "Golf",
     resume: "Sport",
     meta: "Index : 11,6",
-    html: '<video src="golf.mp4" controls playsinline style="width:100%;border-radius:6px"></video>',
+    html: '<video class="mini-media" src="golf.mp4" controls playsinline></video>',
     liens: []
   },
   {
     titre: "JJB",
     resume: "Jiu-jitsu brésilien",
     meta: "Ceinture blanche, -93 kg",
-    html: '<img src="jjb-podium.webp" alt="Podium de compétition JJB" style="width:100%;border-radius:6px;margin-bottom:.8rem">' +
-          '<img src="jjb-groupe.webp" alt="Groupe du club de JJB" style="width:100%;border-radius:6px">',
+    html: '<img class="mini-media" src="jjb-podium.webp" alt="Podium de compétition JJB" style="margin-bottom:.8rem">' +
+      '<img class="mini-media" src="jjb-groupe.webp" alt="Groupe du club de JJB">',
     liens: []
   }
 ]
