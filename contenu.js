@@ -151,6 +151,7 @@ passions: [
     liens: []
   }
 ]
+};
 
 /* Contenu du détail « Semestre 1 & 2 » */
 function releveHtml() {
