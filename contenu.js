@@ -36,7 +36,7 @@ const DATA = {
           <img src="${SCHEMA_ECG}" alt="Schéma fonctionnel complet du cardiofréquencemètre">
         </figure>
         <iframe class="pdf" src="${PDF_ECG}" title="Compte rendu du cardiofréquencemètre (PDF)"></iframe>
-        <p class="empty">Le PDF ne s'affiche pas ? Ouvre-le avec le premier bouton ci-dessous.</p>`,
+        <p class="empty">Le PDF ne s'affiche pas ? Ouvrez-le avec le premier bouton ci-dessous.</p>`,
       liens: [
         { label: "Ouvrir dans un nouvel onglet", href: PDF_ECG, blank: true },
         { label: "Télécharger le PDF", href: PDF_ECG, alt: true, download: PDF_ECG_NOM }
