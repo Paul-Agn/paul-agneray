@@ -101,6 +101,7 @@ const DATA = {
       resume: "Carrefour · Temps partiel",
       meta: "Nov. 2025 – août 2026 (10 mois) · Annecy, Auvergne-Rhône-Alpes, France · Sur site",
       lieu: "134 Av. de Genève, 74000 Annecy",
+      coords: "45.92497561658167, 6.12456008437433",
       html: "",
       liens: []
     },
@@ -109,6 +110,7 @@ const DATA = {
       resume: "E.Leclerc Crozon · CDD",
       meta: "Juil. 2024 – août 2024 (2 mois) · Crozon, Bretagne, France · Sur site",
       lieu: "7 route de Penandreff, 29160 Crozon",
+      coords: "48.25195355501836, -4.472876254838086",
       html: "",
       liens: []
     },
@@ -117,6 +119,7 @@ const DATA = {
       resume: "Dubler Toiture SA · Stage",
       meta: "Juil. 2024 – juil. 2024 (2 semaines) · Grens, Vaud, Suisse · Hybride",
       lieu: "Chem. du Chalet 10, 1274 Grens, Suisse",
+      coords: "46.394261212049635, 6.192127721138221",
       html: "",
       liens: []
     },
@@ -125,6 +128,7 @@ const DATA = {
       resume: "EARL La Ferme des Bioux · Temps partiel",
       meta: "Avr. 2022 – juil. 2022 (4 mois) · Ferney-Voltaire, Auvergne-Rhône-Alpes, France · Sur site",
       lieu: "Av. Voltaire, 01210 Ferney-Voltaire",
+      coords: "46.25584066414095, 6.108102032498037",
       html: "",
       liens: []
     }
