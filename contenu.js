@@ -134,12 +134,23 @@ const DATA = {
     }
   ],
 
-  /* ✏️ Passions : descriptions à compléter */
-  passions: [
-    { titre: "Golf", resume: "Sport", meta: "", html: "", liens: [] },
-    { titre: "JJB", resume: "Jiu-jitsu brésilien", meta: "", html: "", liens: [] }
-  ]
-};
+passions: [
+  {
+    titre: "Golf",
+    resume: "Sport",
+    meta: "Index : 11,6",
+    html: '<video src="golf.mp4" controls playsinline style="width:100%;border-radius:6px"></video>',
+    liens: []
+  },
+  {
+    titre: "JJB",
+    resume: "Jiu-jitsu brésilien",
+    meta: "Ceinture blanche, -93 kg",
+    html: '<img src="jjb-podium.webp" alt="Podium de compétition JJB" style="width:100%;border-radius:6px;margin-bottom:.8rem">' +
+          '<img src="jjb-groupe.webp" alt="Groupe du club de JJB" style="width:100%;border-radius:6px">',
+    liens: []
+  }
+]
 
 /* Contenu du détail « Semestre 1 & 2 » */
 function releveHtml() {
